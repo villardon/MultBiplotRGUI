@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "GeneralResults <- function(title=\"Analysis Results\", text=\"Results\", Toolkit = \"RGtk2\", ...) {\n  options(guiToolkit = Toolkit)\n  if (class(text)==\"character\")\n    text=list(Analysis=text)\n\n  ntabs=length(text)\n  Tabs=list()\n  Names=names(text)\n  Texts=list()\n\n  window <- gwindow(title, horizontal = FALSE)\n  notebook <- gnotebook(container = window)\n  size(notebook) <- c(800, 600)\n  texto=character()\n  # Group for the original data\n  for (i in 1:ntabs){\n    Tabs[[i]] <- ggroup(container = notebook, label = Names[i], horizontal = FALSE)\n    Texts[[i]] <- gtext(\"\", container=Tabs[[i]])\n    insert(Texts[[i]],text[[i]], font.attr=c(family=\"monospace\"))\n    size(Texts[[i]]) <- c(800, 570)\n    texto=c(texto, text[[i]])\n  }\n\n  aQuit  <- gaction(label=\"Quit\",   icon=\"quit\",  handler=function(h,...) dispose(window))\n  aCut <-   gaction(label=\"Cut\",    icon=\"cut\",   handler=NULL)\n  aCopy <-  gaction(label=\"Copy\",   icon=\"copy\",  handler=NULL)\n  aPaste <- gaction(label=\"Paste\",  icon=\"paste\", handler=NULL)\n\n  aSave<- gaction(label=\"Save Results\",  icon=\"save\", handler=function(h,...){\n    setfilename <- paste(gfile(text=\"Results.txt\", type=\"save\"), \".txt\", sep=\"\")\n    write(svalue(texto), file=setfilename)\n  }\n  )\n\n  ml <- list(File = list(\n    Savegr= aSave,\n    sep = list(separator = TRUE), # must be named component\n    quit = aQuit),\n    Edit = list(\n      cut= aCut,\n      copy = aCopy,\n      paste = aPaste)\n  )\n  mismenus=gmenu(ml, container = window)\n\n\n\n\n  # SaveResButt <- gbutton(\"Save Results\", container = window, handler = function(h,...){\n  #   setfilename <- paste(gfile(text=\"Results.txt\", type=\"save\"), \".txt\", sep=\"\")\n  #   write(svalue(texto), file=setfilename)\n  # })\n}\n",
+    "created" : 1480665850141.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1299888918",
+    "id" : "49EF43B2",
+    "lastKnownWriteTime" : 1480665966,
+    "last_content_update" : 1480665966,
+    "path" : "C:/Users/Administrador/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/R/GeneralResults.R",
+    "project_path" : "R/GeneralResults.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

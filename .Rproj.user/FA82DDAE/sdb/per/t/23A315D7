@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "BoxPlotPanel <- function(X, groups=NULL, nrows=NULL, panel=TRUE, notch=FALSE, GroupsTogether=TRUE){\n  separated=!panel\n\n  k=0\n  n=dim(X)[1]\n  p=dim(X)[2]\n\n  if (is.null(groups)) {\n    groups=as.factor(rep(1,n))\n    levels(groups)=\"Complete Sample\"}\n\n  if (!is.factor(groups)) stop(\"The variable defining the groups must be a factor\")\n\n  g=length(levels(groups))\n  Levels=levels(groups)\n  varnames=colnames(X)\n\n  if (GroupsTogether){\n\n    if (is.null(nrows))\n      nrows=round(sqrt(p))\nprint(nrows)\n    ncols=ceiling(p/nrows)\n\n    if (separated==FALSE)\n      op=par(mfrow=c(nrows, ncols))\n\n    for (j in 1:p){\n      if (separated==TRUE) dev.new()\n      boxplot(X[,j]~groups,notch=notch, main=varnames[j])}\n\n    if (separated==FALSE)\n      par(op)\n  }\n  else{\n    if (is.null(nrows))\n      nrows=round(sqrt(g))\n\n    ncols=ceiling(g/nrows)\n\n    if (separated==FALSE)\n      op=par(mfrow=c(nrows, ncols))\n\n    for (i in 1:g){\n      XX = as.matrix(X[which(groups == Levels[i]), ])\n      x=numeric()\n      grupvar=numeric()\n      for (j in 1:p){\n        x=c(x, as.numeric(XX[,j]))\n        grupvar=c(grupvar, rep(j, length(XX[,j])))\n      }\n      grupvar=as.factor(grupvar)\n      levels(grupvar)=varnames\n      if (separated==TRUE) dev.new()\n      boxplot(x~grupvar,notch=notch, main=Levels[i])}\n  }\n\n}\n",
+    "created" : 1490276702946.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3639055792",
+    "id" : "23A315D7",
+    "lastKnownWriteTime" : 1490875314,
+    "last_content_update" : 1490875314400,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/R/BoxPlotPanel.R",
+    "project_path" : "R/BoxPlotPanel.R",
+    "properties" : {
+    },
+    "relative_order" : 12,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

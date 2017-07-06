@@ -1,0 +1,16 @@
+export(PlotBiplotGUI, PCA.BiplotGUI, MultBiplotRGUI, EditorMultBiplotRGUI, GeneralResults, GeneralTable,
+       CanonicalBiplotGUI, UnivariateGUI, StemPlots, BoxPlotPanel, BasicDescription, ErrorBarPlotPanel,
+       Valid, ConfidenceInterval, ggCalibratedBiplot, ggplot.ContinuousBiplot, ggTextMarksVarBiplot,
+       ggPlotMarksVarBiplot, ggPlotVarProjBiplot, ggcircle, HistogramPanel, NormalityTests, Bartlett.Tests,
+       Levene.Tests, Games_Howell, ANOVA.Tests, Kruskal.Wallis.Tests,ggSegBiplotBiplot, UpdateMultBiplotGUI, ScatterGUI)
+
+import(gWidgets, MultBiplotR, gWidgetstcltk, foreign, ggplot2)
+
+importFrom("grDevices", "colors")
+importFrom("graphics", "hist", "pairs", "par", "plot", "rect", "strwidth", "text")
+importFrom("stats", "cor")
+importFrom("gdata", "read.xls")
+importFrom("foreign", "read.spss")
+importFrom("utils", "capture.output", "data")
+importFrom("MASS", "lda")
+importFrom("Hmisc", "errbar")

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "export(PlotBiplotGUI, PCA.BiplotGUI, MultBiplotRGUI, EditorMultBiplotRGUI, GeneralResults, GeneralTable,\n       CanonicalBiplotGUI, UnivariateGUI, StemPlots, BoxPlotPanel, BasicDescription, ErrorBarPlotPanel,\n       Valid, ConfidenceInterval, ggCalibratedBiplot, ggplot.ContinuousBiplot, ggTextMarksVarBiplot,\n       ggPlotMarksVarBiplot, ggPlotVarProjBiplot, ggcircle, HistogramPanel, NormalityTests, Bartlett.Tests,\n       Levene.Tests, Games_Howell, ANOVA.Tests, Kruskal.Wallis.Tests,ggSegBiplotBiplot, UpdateMultBiplotGUI, ScatterGUI)\n\nimport(gWidgets, MultBiplotR, gWidgetstcltk, foreign, ggplot2)\n\nimportFrom(\"grDevices\", \"colors\")\nimportFrom(\"graphics\", \"hist\", \"pairs\", \"par\", \"plot\", \"rect\", \"strwidth\", \"text\")\nimportFrom(\"stats\", \"cor\")\nimportFrom(\"gdata\", \"read.xls\")\nimportFrom(\"foreign\", \"read.spss\")\nimportFrom(\"utils\", \"capture.output\", \"data\")\nimportFrom(\"MASS\", \"lda\")\nimportFrom(\"Hmisc\", \"errbar\")\n",
+    "created" : 1479118613317.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2619916697",
+    "id" : "E2F1225B",
+    "lastKnownWriteTime" : 1498475627,
+    "last_content_update" : 1498475627049,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/NAMESPACE",
+    "project_path" : "NAMESPACE",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_namespace"
+}

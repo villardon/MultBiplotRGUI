@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "export(PlotBiplotGUI, PCA.BiplotGUI, MultBiplotRGUI, EditorMultBiplotRGUI, GeneralResults,GeneralTable)\n\nimport(gWidgets, MultBiplotR, foreign, png)\n",
+    "created" : 1476428190446.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3466930925",
+    "id" : "66C02F34",
+    "lastKnownWriteTime" : 1476397070,
+    "last_content_update" : 1476397070,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/NAMESPACE",
+    "project_path" : "NAMESPACE",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_namespace"
+}

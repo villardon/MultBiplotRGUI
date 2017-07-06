@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Datos.Jhonny <- read.delim(\"~/Dropbox/0 Jhonny-Jose/Ecuador Rivers/Datos Jhonny.txt\")\nDatos.Jhonny <- read.delim(\"/Users/villardon/Dropbox/0 Jhonny-Jose/Ecuador Rivers/Datos Jhonny.txt\")\nload(\"/Users/villardon/Dropbox/0 Ecuador Rivers/EcuadorRivers.Rd\")\n\n\n# Este ya es el numero corregido con las variables correctas\nX=as.matrix(EcuadorRivers[,3:24])\n\nnames=colnames(X)\nsortnames=sort(names, index.return=T)\nsortnames$ix\nX=X[,sortnames$ix]\nX2=EcuadorRivers[,c(1,sortnames$ix+2)]\nEditorMultBiplotRGUI(X2)\n\nlibrary(MultBiplotR)\ncanbip=CanonicalBiplot(X, group=EcuadorRivers$site)\ngroup=EcuadorRivers$site\nfit=manova(as.matrix(X)~group)\nsummary(fit, test=\"Wilks\")\n\nsummary(canbip)\n\nplot(canbip, A1=1, A2=2, margin=0, mode=\"a\", MinQualityVars=0.5, voronoi=TRUE, TypeCircle=\"M\", PchInd=16,\n     LabelInd=FALSE, LabelAxes=TRUE, CexInd=0.5, LegendPos=\"topleft\", ShowAxes=FALSE, AddLegend=FALSE, CexGroup=0.6, ShowTitle=FALSE)\nplot(canbip, A1=1, A2=3, margin=0, mode=\"a\", MinQualityVars=0.5, voronoi=TRUE, TypeCircle=\"M\", PchInd=16,\n     LabelInd=FALSE, LabelAxes=TRUE, CexInd=0.5, LegendPos=\"topleft\", ShowAxes=FALSE, AddLegend=FALSE, CexGroup=0.6, ShowTitle=FALSE)\n\nlibrary(rgl)\nplot3dCanonicalBiplot(canbip, A1=1, A2=2, margin=0.1, mode=\"a\", MinQualityVars=0, voronoi=FALSE, TypeCircle=\"M\", PchInd=16, LabelInd=FALSE, LabelAxes=TRUE, LabelGroups=FALSE, CexInd=1,\n                      LegendPos=\"topleft\", ShowAxes=FALSE, ConvexHulls=FALSE, PchGroup=16, CexGroup=3, AddLegend=FALSE, ColorAxis=\"brown\", ColorGroups=c(\"pink\", \"red\", \"green\", \"blue\"))\n# axes3d(box=FALSE)\n\nfilename <- writeWebGL(dir = file.path(tempdir(), \"webGL\"),\n                       width = 500, reuse = TRUE)\n# Display the \"reuse\" attribute\nattr(filename, \"reuse\")\n\n# Display the scene in a browser\nif (interactive())\n  browseURL(paste0(\"file://\", filename))\n\n\nbip=PCA.Biplot(X)\nplot(bip, PlotClus=T)\nbip = AddCluster2Biplot(bip, ClusterType = \"us\", Groups = EcuadorRivers$site)\nhelp(\"plot.ContinuousBiplot\")\n",
+    "created" : 1482161182039.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1063289270",
+    "id" : "518CE17E",
+    "lastKnownWriteTime" : 1482170120,
+    "last_content_update" : 1482170120668,
+    "path" : "~/Dropbox/0 Ecuador Rivers/Analisis.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

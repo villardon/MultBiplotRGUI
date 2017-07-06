@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "HistogramPanel <- function(X, groups=NULL, nrows=NULL, separated=FALSE, notch=FALSE){\n\n  k=0\n  n=dim(X)[1]\n  p=dim(X)[2]\n\n  if (is.null(groups)) {\n    groups=as.factor(rep(1,n))\n    levels(groups)=\"Complete Sample\"}\n\n  if (!is.factor(groups)) stop(\"The variable defining the groups must be a factor\")\n\n  g=length(levels(groups))\n  Levels=levels(groups)\n  varnames=colnames(X)\n\n  if (is.null(nrows))\n    nrows=round(sqrt(p))\n\n  ncols=ceiling(p/nrows)\n\n  if (separated==FALSE)\n    op=par(mfrow=c(nrows, ncols))\n\n  for (j in 1:p){\n    if (separated==TRUE) dev.new()\n    boxplot(X[,j]~groups,notch=notch, main=varnames[j])}\n\n  if (separated==FALSE)\n    par(op)\n\n}\n",
+    "created" : 1479113954096.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4168237907",
+    "id" : "A24E74F2",
+    "lastKnownWriteTime" : 1479113996,
+    "last_content_update" : 1479113996932,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/R/HistogramPanel.R",
+    "project_path" : "R/HistogramPanel.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 13,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

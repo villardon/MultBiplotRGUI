@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: MultBiplotRGUI\nType: Package\nTitle: Graphical User Interface for MultBiplotR\nVersion: 0.1.0\nAuthor: Jose Luis Vicente Villardon\nMaintainer: Jose Luis Vicente Villardon <villardon@usal.es>\nDescription: The package is a Graphical User Interface for MultBiplotR (Multivariate Analysis using Biplots)\nLicense: GPL (>=2)\nEncoding: latin1\nRepository: CRAN\nDepends:R (>= 3.2.0), gWidgets, gWidgetsRGtk2, RGtk2, MultBiplotR, ggplot2, ggrepel\nImports: MASS, lattice\nLazyData: yes\nArchs: i386, x64\nNeedsCompilation: no\n",
+    "created" : 1475858078452.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2845786086",
+    "id" : "1D6FBF30",
+    "lastKnownWriteTime" : 1478864136,
+    "last_content_update" : 1478864136,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}

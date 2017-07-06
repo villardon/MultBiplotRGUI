@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "install.packages(c(\"gWidgets\", \"gWidgetsRGtk2\", \"RGtk2\", \"cairoDevice\", \"foreign\", \"rattle\", \"ggrepel\", \"Hmisc\" ))\n",
+    "created" : 1482160564919.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1597167686",
+    "id" : "FA70E40",
+    "lastKnownWriteTime" : 111550524582252,
+    "last_content_update" : 1482160571594,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

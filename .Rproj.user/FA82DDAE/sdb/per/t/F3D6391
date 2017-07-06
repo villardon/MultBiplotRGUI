@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "Kruskal.Wallis.Tests <- function(X, groups, posthoc=\"none\", alternative=\"two.sided\", digits=4){\n  if (require(dunn.test)==FALSE){\n    gmessage(\"You must install the package (dunn.test) to use this menu\")\n  }\n\n  n=dim(X)[1]\n  p=dim(X)[2]\n\n  if (!is.factor(groups)) stop(\"The variable defining the groups must be a factor\")\n\n  g=length(levels(groups))\n  Levels=levels(groups)\n  varnames=colnames(X)\n  txt=capture.output(cat(\"\\n\\n\\n***** KRUSKAL-WALLIS WITH POST-HOC COMPARISOSNS *****\\n\\n\"))\n\n  Comparisons=combn(levels(groups), 2, paste, collapse=\":\")\n\n  Summary.Kruskal=matrix(0, p, 3)\n\n  Summary.posthoc=list()\n  for (j in 1:length(posthoc)) {\n    Summary.posthoc[[j]]=matrix(0, p , g*(g-1)/2)\n    rownames(Summary.posthoc[[j]])=varnames\n    colnames(Summary.posthoc[[j]])=Comparisons\n  }\n  names(Summary.posthoc)=posthoc\n\n  for (i in 1:p){\n    txt=c(txt, capture.output(cat(\"*************************************************************************\\n\\n\")))\n    txt=c(txt, capture.output(cat(\"******* Variable : \", varnames[i], \"-------------\\n\\n\")))\n    av=kruskal.test(X[,i], g=groups)\n\n    Summary.Kruskal[i,1] = round(av$statistic, digits=digits)\n    Summary.Kruskal[i,2] = round(av$parameter, digits=digits)\n    Summary.Kruskal[i,3] = round(av$p.value, digits=digits)\n    txt=c(txt, capture.output(print(av)))\n\n    for (j in 1:length(posthoc)){\n        ph=dunn.test(X[,i], g=groups, method=posthoc[j], kw=FALSE)\n        txt=c(txt, capture.output(ph=dunn.test(X[,i], g=groups, method=posthoc[j], kw=FALSE)))\n        Summary.posthoc[[j]][i,]=round(ph$P.adjusted, digits=digits)\n      }\n    txt=c(txt, capture.output(cat(\"*************************************************************************\\n\\n\")))\n  }\n  txt=c(txt, capture.output(cat(\"\\n\\n SUMMARY OF RESULTS ****************************************************\\n\\n\")))\n  rownames(Summary.Kruskal)<- varnames\n  colnames(Summary.Kruskal) <- c(\"Chi-squared\", \"df\", \"p.value\")\n  txt=c(txt, capture.output(cat(\"Kruskal-Wallis ****************************************************\\n\\n\")))\n  txt=c(txt, capture.output(print(Summary.Kruskal)))\n  txt=c(txt, capture.output(cat(\"\\n\\n POST-HOC COMPARISONS - Dunn Test *************************************************\\n\\n\")))\n  testnames=names(Summary.posthoc)\n  for (i in 1:length(Summary.posthoc)){\n  txt=c(txt, capture.output(print(testnames[i])))\n  txt=c(txt, capture.output(print(t(Summary.posthoc[[i]]))))}\n  txt=c(txt, capture.output(cat(\"*************************************************************************\\n\\n\")))\n\n\n  return(txt)\n}\n\n",
+    "created" : 1491302213021.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1484353217",
+    "id" : "F3D6391",
+    "lastKnownWriteTime" : 1491305650,
+    "last_content_update" : 1491305650492,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/R/Kruskal.Wallis.Tests.R",
+    "project_path" : "R/Kruskal.Wallis.Tests.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 12,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

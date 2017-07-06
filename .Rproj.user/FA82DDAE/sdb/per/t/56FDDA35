@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "PostHocGraph <- function(pvalmatrix, version=1, color=c(\"red3\", \"red\",\"gray97\"), nrows=NULL, panel=TRUE, title=\"Post-Hoc p-values\", ...){\n  nvar=dim(pvalmatrix)[1]\n  ncomp=dim(pvalmatrix)[2]\n  ng=(1+sqrt(1+8*ncomp))/2\n  varnames=rownames(pvalmatrix)\n  compnames=colnames(pvalmatrix)\n  groupnames=strsplit(compnames[1], \":\")[[1]][1]\n  for (i in 1:(ng-1))\n    groupnames=c(groupnames, strsplit(compnames[i], \":\")[[1]][2])\n\n\n  if (is.null(nrows))\n    nrows=round(sqrt(nvar))\n  ncols=ceiling(nvar/nrows)\n\n\n  if (version ==3){\n    require(lattice)\n    op=par(mfrow=c(nrows, ncols))\n  }\n  else require(gplots)\n  P=list()\n\n  for (l in 1:nvar){\n    P[[l]]=matrix(1, ng, ng)\n    k=0\n    for (i in 1:(ng-1))\n      for (j in (i+1):ng){\n        k=k+1\n        P[[l]][i,j]=pvalmatrix[l,k]\n        P[[l]][j,i]=P[[l]][i,j]\n      }\n    rownames(P[[l]])=groupnames\n    colnames(P[[l]])=groupnames\n  }\n\n  for (l in 1:nvar){\n   title2=paste(title,\":\", varnames[l])\n    if (version==1)\n      heatmap(P[[l]], Rowv=NA, scale=\"none\",symm=TRUE, revC=FALSE, breaks=c(0, 0.01, 0.05, 1), col=color, margins=c(7,7), main=title2, ...)\n\n   if (version==2){\n      #dev.new()\n      heatmap.2(P[[l]], Rowv=FALSE, scale=\"none\",symm=TRUE, dendrogram=\"none\", revC=FALSE, breaks=c(0, 0.01, 0.05, 1), col=color, key=FALSE, density.info=\"none\",\n                cellnote=round(P[[l]], digits=3), notecol=\"black\", sepcolor=\"black\", trace=\"none\", margins=c(5,5), main=title2, lmat=rbind( c(0, 3), c(2,1), c(0,4) ), lhei=c(0.3, 4, 0.3), ...)}\n\n   if (version==3) levelplot(P[[l]])\n\n  }\n  names(P)=varnames\nsave(P, file=\"~/Dropbox/0 Daniela/P.rda\")\n\n  if (version ==3){\n    par(op)\n  }\n}\n",
+    "created" : 1490265672088.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2113108409",
+    "id" : "56FDDA35",
+    "lastKnownWriteTime" : 1490698632,
+    "last_content_update" : 1490698632905,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/R/PostHocGraph.R",
+    "project_path" : "R/PostHocGraph.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 17,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

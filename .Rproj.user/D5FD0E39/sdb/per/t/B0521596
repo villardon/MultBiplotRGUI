@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "MultBiplotRGUI <- function(Toolkit = \"RGtk2\", ...) {\n  require(gWidgets)\n  options(guiToolkit = Toolkit)\n\n  FillData <- function(X){EditorMultBiplotRGUI(X)}\n\n  window <- gwindow(\"MultBiplotR\")\n  notebook <- gnotebook(cont = window)\n  size(notebook) <- c(600, 600)\n\n  GraphTab = ggroup(cont = notebook, label = gettext(\"MultBiplot\"), horizontal = FALSE)\n  Grafico<-ggraphics(container=GraphTab)\n  data(geometry)\n  grid::grid.raster(geometry)\n\n  WorkSpaceTab = ggroup(cont = notebook, label = gettext(\"WorkSpace\"), horizontal = FALSE)\n  ReadSystem = gframe(text = \"Double click to use a frame from the workspace\", markup = FALSE, horizontal = FALSE, container = WorkSpaceTab)\n  size(ReadSystem) <- c(500, 400)\n  workspace_browser <- gvarbrowser(container=ReadSystem, action=\"FillData\")\n\n\n  OpenTab = ggroup(cont = notebook, label = gettext(\"Open\"), horizontal = FALSE)\n  ReadFileFrame = gframe(text = \"Use a file containing R data\", markup = FALSE, horizontal = FALSE, container = OpenTab)\n   aOpenR <-  gaction(label=\"Open R Data\",   icon=\"open\",  handler = function(h,...){\n   file <- gfile(\"Open an R data file\",\n                  type=\"open\" ,\n                  filter=list (\"R data file\" = list(\n                    patterns = c(\"*.rda\" , \"*.Rda\" , \"*.RDA\"  , \"*.Rdata\")\n                  ),\n                  \"All files\" = list(patterns = c(\"*\"))\n                  ))\n    if ( !is.na(file)){\n      xx=load(file)\n      eval(parse(text=paste(\"X =\",as.character(xx))))\n      EditorMultBiplotRGUI(X)}\n  })\n  ReadButt <- gbutton(action=aOpenR, container = ReadFileFrame)\n\n  ImportFrame = ggroup(cont = notebook, label = gettext(\"Import\"), horizontal = FALSE)\n\n  ImportTabFrame = gframe(text = \"Import Tab Delimited Data\", markup = FALSE, horizontal = FALSE, container = OpenTab)\n  aOpenTab <-  gaction(label=\"Open R Data\",   icon=\"open\",  handler = function(h,...){\n    file <- gfile(\"Open text data file\",\n                  type=\"open\" ,\n                  filter=list (\"R data file\" = list(\n                    patterns = c(\"*.txt\" , \"*.dat\")\n                  ),\n                  \"All files\" = list(patterns = c(\"*\"))\n                  ))\n    if ( !is.na(file)){\n      xx=load(file)\n      eval(parse(text=paste(\"X =\",as.character(xx))))\n      EditorMultBiplotRGUI(X)}\n  })\n  ReadButt <- gbutton(action=aOpenR, container = ReadFileFrame)\n\n\n\n  svalue(notebook) <- 1\n}\n",
+    "created" : 1476428175777.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "878104644",
+    "id" : "B0521596",
+    "lastKnownWriteTime" : 1476428671,
+    "last_content_update" : 1476428671235,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/R/MultBiplotRGUI.R",
+    "project_path" : "R/MultBiplotRGUI.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

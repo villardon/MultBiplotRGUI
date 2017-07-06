@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "Bartlett.Tests <- function(X, groups=NULL){\n  n=dim(X)[1]\n  p=dim(X)[2]\n\n  if (is.null(groups)) {\n    groups=as.factor(rep(1,n))\n    levels(groups)=\"Complete Sample\"}\n\n  if (!is.factor(groups)) stop(\"The variable defining the groups must be a factor\")\n\n  g=length(levels(groups))\n  Levels=levels(groups)\n  varnames=colnames(X)\n\n  res=apply(X,2,bartlett.test, g=groups)\n  Bartlett=matrix(0, p, 3)\n for (i in 1:p){\n   Bartlett[i,1]=res[[i]]$statistic\n   Bartlett[i,2]=res[[i]]$parameter\n   Bartlett[i,3]=res[[i]]$p.value\n }\n  rownames(Bartlett)=varnames\n  colnames(Bartlett)=c(\"Chi-squared\", \"d.f.\", \"p-value\")\n  return(Bartlett)\n}\n\n",
+    "created" : 1479715271085.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1260401680",
+    "id" : "729D7A77",
+    "lastKnownWriteTime" : 1479716897,
+    "last_content_update" : 1479716897327,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/R/Bartlett.Tests.R",
+    "project_path" : "R/Bartlett.Tests.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 14,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

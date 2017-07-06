@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "Levene.Tests <- function(X, groups=NULL){\n  n=dim(X)[1]\n  p=dim(X)[2]\n\n  if (is.null(groups)) {\n    groups=as.factor(rep(1,n))\n    levels(groups)=\"Complete Sample\"}\n\n  if (!is.factor(groups)) stop(\"The variable defining the groups must be a factor\")\n\n  g=length(levels(groups))\n  Levels=levels(groups)\n  varnames=colnames(X)\n\n  res=apply(X,2,leveneTest, group=groups)\n  Levene=matrix(0, p, 4)\n  for (i in 1:p){\n    Levene[i,1]=res[[i]]$`F value`[1]\n    Levene[i,2]=res[[i]]$Df[1]\n    Levene[i,3]=res[[i]]$Df[2]\n    Levene[i,4]=res[[i]]$`Pr(>F)`[1]\n  }\n  rownames(Levene)=varnames\n  colnames(Levene)=c(\"F-value\", \"d.f.1\", \"d.f.2\", \"p-value\")\n  return(Levene)\n}\n",
+    "created" : 1479716553210.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3213612302",
+    "id" : "7DB3FE9D",
+    "lastKnownWriteTime" : 1479716566,
+    "last_content_update" : 1479716566776,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/R/Levene.Tests.R",
+    "project_path" : "R/Levene.Tests.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 16,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

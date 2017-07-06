@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "StemPlots <- function(X, groups=NULL, SortByGroups=FALSE, na.rm=FALSE){\n  n=dim(X)[1]\n  p=dim(X)[2]\n\n  if (is.null(groups)) {\n    groups=as.factor(rep(1,n))\n    levels(groups)=\"Complete Sample\"}\n\n  if (!is.factor(groups)) stop(\"The variable defining the groups must be a factor\")\n\n  g=length(levels(groups))\n  Levels=levels(groups)\n  varnames=colnames(X)\n\n  Descriptives=list()\n  nameslist=character()\n  k=0\n  if (SortByGroups==TRUE){\n    for (i in 1:g){\n      XX = as.matrix(X[which(groups == Levels[i]), ])\n      for (j in 1:p){\n        k=k+1\n        nameslist[[k]]=paste(Levels[i], varnames[j], sep=\"-\")\n        Descriptives[[k]]=capture.output(stem(XX[,j]))\n      }\n    }\n    names(Descriptives) = nameslist\n  }\n\n\n\n  if (SortByGroups==FALSE){\n    for (i in 1:p){\n      XX = as.numeric(X[,j])\n      for (j in 1:g){\n        k=k+1\n        nameslist[[k]]=paste(varnames[i], Levels[j], sep=\"-\")\n      Descriptives[[k]]=capture.output(as.matrix(XX[which(groups == Levels[j]) ]))}\n    }\n    names(Descriptives) = nameslist\n  }\n  return(Descriptives)\n}\n\n",
+    "created" : 1478880087203.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3624142160",
+    "id" : "25D3FC2E",
+    "lastKnownWriteTime" : 1479110660,
+    "last_content_update" : 1479110660484,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/R/StemPlots.R",
+    "project_path" : "R/StemPlots.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 9,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

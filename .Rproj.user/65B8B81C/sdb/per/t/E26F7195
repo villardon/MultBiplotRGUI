@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "NormalityTests <- function(X, groups=NULL, plot=FALSE, SortByGroups=FALSE){\n\n  k=0\n  n=dim(X)[1]\n  p=dim(X)[2]\n\n  if (is.null(groups)) {\n    groups=as.factor(rep(1,n))\n    levels(groups)=\"Complete Sample\"}\n\n  if (!is.factor(groups)) stop(\"The variable defining the groups must be a factor\")\n\n  g=length(levels(groups))\n  Levels=levels(groups)\n  varnames=colnames(X)\n\n  Descriptives=list()\n\n  if (SortByGroups==TRUE){\n    if (plot) op=par(mfrow=c(g, p))\n    for (i in 1:g){\n      XX = as.matrix(X[which(groups == Levels[i]), ])\n      swt=apply(XX, 2, shapiro.test)\n      SW=matrix(0,p,2)\n      for (j in 1:p){\n        SW[j,]=c(swt[[j]]$statistic, swt[[j]]$p.value)\n        if (plot) qqnorm(XX[,j] , main=paste(Levels[i],varnames[j], sep=\"-\"))\n        }\n      rownames(SW)=varnames\n      colnames(SW) = c(\"Statistic\", \"p-value\")\n      Descriptives[[i]]=SW\n    }\n    if (plot) par(op)\n\n  names(Descriptives)= paste(Levels, \"-\", \"Shapiro-Wilk normality tests\")\n  }\n\n  if (SortByGroups==FALSE){\n    if (plot) op=par(mfrow=c(p, g))\n    for (i in 1:p){\n      XX = as.numeric(X[,i])\n      swt=by(XX,groups,shapiro.test)\n      SW=matrix(0,g,2)\n      for (j in 1:g){\n       SW[j,]=c(swt[[j]]$statistic, swt[[j]]$p.value)\n       if (plot) qqnorm(XX[which(groups == Levels[j])] , main=paste(varnames[i], Levels[j], sep=\"-\"))}\n      rownames(SW)=Levels\n      colnames(SW) = c(\"Statistic\", \"p-value\")\n      Descriptives[[i]]=SW\n\n    }\n    if (plot) {\n      title(\"Normal Q-Q Plot\", outer=TRUE)\n      par(op)}\n    names(Descriptives)= paste(varnames, \"-\", \"Shapiro-Wilk normality tests\")\n  }\n  return(Descriptives)\n\n}\n",
+    "created" : 1479715489874.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1591373941",
+    "id" : "E26F7195",
+    "lastKnownWriteTime" : 1479717461,
+    "last_content_update" : 1479717461638,
+    "path" : "~/Dropbox/0 ProgramasR/Paquetes/MultBiplotRGUI/R/NormalityTests.R",
+    "project_path" : "R/NormalityTests.R",
+    "properties" : {
+    },
+    "relative_order" : 15,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

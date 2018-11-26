@@ -1,12 +1,10 @@
 ErrorBarPlotPanel <- function(X, groups=NULL, nrows=NULL, panel=TRUE, GroupsTogether=TRUE, Confidence=0.95, p.adjust.method="None", UseANOVA=FALSE){
   if (require(Hmisc)==FALSE){
     gmessage("You must install the package (Hmisc) to use error bars")
-    
     gconfirm("Are we having fun?", handler = function(h,...)
       print("Yes"))
-    
   }
-  
+
 
   separated=!panel
 

@@ -19,9 +19,7 @@ PCA.BiplotGUI <- function(X, HJ=FALSE, Toolkit = "tcltk", ...) {
     alpha=svalue(Alpha)
 
 
-
     dims= svalue(Dimens)
-    print(dims)
     sc=svalue(prevtsc, index=TRUE)
 
     Classes=sapply(X,class)
@@ -143,8 +141,10 @@ PCA.BiplotGUI <- function(X, HJ=FALSE, Toolkit = "tcltk", ...) {
   TypeBi[1, 3] <- "JK - RMP"}
 
   DimensionFrame = gframe(text = "Dimension of the solution", markup = FALSE, horizontal = TRUE, container = BiplotDef)
-  Dimens <- gspinbutton(from = 2, to = 50, by = 1, value = 3, container = DimensionFrame)
-  svalue(Dimens) <- 3
+  #Dimens <- gspinbutton(from = 2, to = 50, by = 1, value = 3, container = DimensionFrame)
+  # svalue(Dimens) <- 3
+  Dimens <- gcombobox(1:15, editable = FALSE, container = DimensionFrame, handler=SelFac)
+  svalue(Dimens, index = TRUE) <- 3
 
 
 
